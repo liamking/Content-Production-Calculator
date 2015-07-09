@@ -14,10 +14,24 @@
 				//alert(totalEffortHours);
 			var hoursPerDay = 6;
 			var totalEffortDays = totalEffortHours / hoursPerDay;
-				//alert(totalEffortDays)
-			document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
+				//alert(totalEffortDays)	
+	//			function showTotalEffortDays() {
+					if (totalEffortDays > 0) {
+						//alert(totalEffortDays) 
+						document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
+					}	else {
+						document.getElementById("totalEffortDays").innerHTML = 0;
+						//alert("not enough variables")	
+					}
+//				}	
+
 	   	}
+
+
+
+
 	   </script>
+
    </head>
 
    <body>
