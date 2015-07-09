@@ -27,8 +27,17 @@
    <body>
    	<h1>Required total effort feature</h1>
    		<form id="totalEffort" onsubmit="return false;">
-    		Target pages: <input type="text" id="targetPagesValue" onchange="calculatorVariables();" /><br />
-    		Estimated effort per page (hours): <input type="text" id="effortPerPageHoursValue" onchange="calculatorVariables();"/><br />
+   			<h3>How many pages on your new site?</h3>
+    			<input type="text" id="targetPagesValue" onchange="calculatorVariables();" /> pages<br />
+            	<p>It can be hard to say, but start thinking about the scale of your content challenge so you don’t underestimate the effort and delay your project.</p>
+            	<p><strong>Tip:</strong> 10 pages - A small business “brochure” site, 50 pages - A high-school web site, 100 pages - A national charity website, 500 pages - A corporate Intranet, 1000 pages - A university or council web site.</p>
+
+            <h3>How much effort to write each page?</h3>
+          	
+    		<input type="text" id="effortPerPageHoursValue" onchange="calculatorVariables();"/> hours<br />
+    			<p>How many hours do you think it will take for a writer to produce a typical page for your new site?</p>
+        		<p><strong>Tip:</strong> 3 Hours - We're migrating pages from our existing site with minimal updates and edits. 8 Hours - We need to (re)write pages from scratch</p>
+
 
    		<button onclick="calculatorVariables();">Run Variables</button>
 
