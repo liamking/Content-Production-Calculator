@@ -6,7 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Content production planning calculator</title>
 
+	   <script>
+	   	function calculatorVariables() {
+	   		var targetPages = document.getElementById("targetPagesValue").value;
+	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
+	   		var totalEffortHours = (effortPerPageHours * targetPages);
+				//alert(totalEffortHours);
+			var hoursPerDay = 6;
+			var totalEffortDays = totalEffortHours / hoursPerDay;
+				//alert(totalEffortDays)
+			document.getElementById("totalEffortDays").innerHTML = totalEffortDays;
+	   	}
+	   </script>
    </head>
+
    <body>
+   	<h1>Required total effort feature</h1>
+   		<form id="totalEffort" onsubmit="return false;">
+    		Target pages: <input type="text" id="targetPagesValue" onchange="calculatorVariables();" /><br />
+    		Estimated effort per page (hours): <input type="text" id="effortPerPageHoursValue" onchange="calculatorVariables();"/><br />
+
+   		<button onclick="calculatorVariables();">Run Variables</button>
+
+   		<p>Days required to write pages: <span id="totalEffortDays">0</span></p>
+
+
    </body>
 </html>
