@@ -33,6 +33,7 @@
 	  </script>
 
     <script>
+      //Calcuate working days in the content production phase
       function workingDaysBetweenDates() {
         var startDate = new Date (document.getElementById("startDateValue").value);
         var endDate = new Date (document.getElementById("endDateValue").value);
@@ -85,12 +86,6 @@
       <!-- PRODUCTION PERIOD FEATURE -->
       <h2>Production period</h2>
         <p>When do you expect to start and end the content production phase?</p>
-<!--        <form id="productionPeriod" onsubmit="return false;">
-          Start date: <input type="date" id="startDateValue" onchange="calculatorVariables();"/><br />
-          End date: <input type="date" id="endDateValue" onchange="calculatorVariables();"/><br />
-        </form>
-        <p><span id="diffDays">0</span> (total) days</p>
-    -->    
         <form id="productionPeriod" onsubmit="return false;">
           Start date: <input type="date" id="startDateValue" onchange="workingDaysBetweenDates()"/><br />
           End date: <input type="date" id="endDateValue" onchange="workingDaysBetweenDates()"/><br />
