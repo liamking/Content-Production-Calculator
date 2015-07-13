@@ -60,6 +60,22 @@
     }     
         </script>
 
+        <script>
+          function requiredWriters() {
+            if (days() && hoursPerDay()) {
+              // YOU ARE HERE!
+            var days = days
+            var requiredWriters = 2.5;
+              // Populate template with number of required writers       
+              if (requiredWriters > 0) {
+                document.getElementById("requiredWriters").innerHTML = requiredWriters;
+              } else {
+                document.getElementById("requiredWriters").innerHTML = 0;
+              } 
+          }
+        </script>
+
+
    </head>
 
    <body>
