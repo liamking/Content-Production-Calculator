@@ -18,24 +18,53 @@
 					}	else {
 						document.getElementById("totalEffortDays").innerHTML = 0;
 					}
+
+ //         var startDate = new Date (document.getElementById("startDateValue").value);
+ //         var endDate = new Date (document.getElementById("endDateValue").value);
+ //         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+ //         var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)) + 1);  // "+1" is to include Day zero of production
+ //         if (diffDays > 0) {
+ //           document.getElementById("diffDays").innerHTML = diffDays;
+ //         } else {
+ //           document.getElementById("diffDays").innerHTML = 0;
+ //         }
+	   	}
+
+	  </script>
+
+    <script>
+      function workingDaysBetweenDates() {
         var startDate = new Date (document.getElementById("startDateValue").value);
         var endDate = new Date (document.getElementById("endDateValue").value);
-        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-        var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)) + 1);  // "+1" is to include Day zero of production
-          if (diffDays > 0) {
-            document.getElementById("diffDays").innerHTML = diffDays;
+
+        // Calculate days between dates
+        var millisecondsPerDay = 86400 * 1000; // Day in milliseconds
+        startDate.setHours(0,0,0,1);  // Start just after midnight
+        endDate.setHours(23,59,59,999);  // End just before midnight
+        var diff = endDate - startDate;  // Milliseconds between datetime objects    
+        var days = Math.ceil(diff / millisecondsPerDay);    
+
+        // Subtract two weekend days for every week in between
+        var weeks = Math.floor(days / 7);
+        days = days - (weeks * 2);
+
+
+
+        // Populate template with working days       
+          if (days > 0) {
+            document.getElementById("diffDays").innerHTML = days;
           } else {
             document.getElementById("diffDays").innerHTML = 0;
           }
-	   	}
-
-	   </script>
+    }     
+        </script>
 
    </head>
 
    <body>
    <h2 class="calcHeading">How many writers do we need for our website project?</h2>
-   	<h2>// Required total effort feature //</h2>
+
+    <!-- REQUIRED TOTAL EFFORT FEATURE -->
    		<form id="totalEffort" onsubmit="return false;">
    			<h3>How many pages on your new site?</h3>
     			<input type="text" id="targetPagesValue" onchange="calculatorVariables();" /> pages<br />
@@ -56,11 +85,18 @@
       <!-- PRODUCTION PERIOD FEATURE -->
       <h2>Production period</h2>
         <p>When do you expect to start and end the content production phase?</p>
-        <form id="productionPeriod" onsubmit="return false;">
+<!--        <form id="productionPeriod" onsubmit="return false;">
           Start date: <input type="date" id="startDateValue" onchange="calculatorVariables();"/><br />
           End date: <input type="date" id="endDateValue" onchange="calculatorVariables();"/><br />
         </form>
-        <p>0<span id="diffDays"></span> working days</p>
+        <p><span id="diffDays">0</span> (total) days</p>
+    -->    
+        <form id="productionPeriod" onsubmit="return false;">
+          Start date: <input type="date" id="startDateValue" onchange="workingDaysBetweenDates()"/><br />
+          End date: <input type="date" id="endDateValue" onchange="workingDaysBetweenDates()"/><br />
+        </form>
+        <p><span id="diffDays">0</span> working days</p>
+
 
    </body>
 </html>
