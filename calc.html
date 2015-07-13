@@ -11,13 +11,13 @@
 	   		var targetPages = document.getElementById("targetPagesValue").value;
 	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
 	   		var totalEffortHours = (effortPerPageHours * targetPages);
-			var hoursPerDay = 6;
-			var totalEffortDays = totalEffortHours / hoursPerDay;
+			  var hoursPerDay = 6;
+			  var totalEffortDays = totalEffortHours / hoursPerDay;
 					if (totalEffortDays > 0) {
 						document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
 					}	else {
 						document.getElementById("totalEffortDays").innerHTML = 0;
-					}	
+					}
 	   	}
 
 	   </script>
@@ -26,7 +26,7 @@
 
    <body>
    <h2 class="calcHeading">How many writers do we need for our website project?</h2>
-   	<p>// Required total effort feature //</h2>
+   	<h2>// Required total effort feature //</h2>
    		<form id="totalEffort" onsubmit="return false;">
    			<h3>How many pages on your new site?</h3>
     			<input type="text" id="targetPagesValue" onchange="calculatorVariables();" /> pages<br />
@@ -43,6 +43,12 @@
    		<button onclick="calculatorVariables();">Run Variables</button>
 
    		<p>Days required to write pages: <span id="totalEffortDays">0</span></p>
+
+      <h2>// Production period feature //</h2>
+        <form id="productionPeriod" onsubmit="return false;">
+          Start date: <input type="date" id="startDateValue" onchange="calculatorVariables();"/><br />
+          End date: <input type="date" id="endDateValue" onchange="calculatorVariables();"/><br />
+        </form>
 
 
    </body>
