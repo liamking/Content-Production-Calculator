@@ -7,11 +7,12 @@
     <title>Content production planning calculator</title>
 
 	   <script>
-	   	function calculatorVariables() {
+	   	hoursPerDay = 6;
+
+      function calculatorVariables() {
 	   		var targetPages = document.getElementById("targetPagesValue").value;
 	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
-	   		var totalEffortHours = (effortPerPageHours * targetPages);
-			  var hoursPerDay = 6;
+	   		totalEffortHours = (effortPerPageHours * targetPages);			  
 			  var totalEffortDays = totalEffortHours / hoursPerDay;
 					if (totalEffortDays > 0) {
 						document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
@@ -30,9 +31,7 @@
  //         }
 	   	}
 
-	  </script>
 
-    <script>
       //Calcuate working days in the content production phase
       function workingDaysBetweenDates() {
         var startDate = new Date (document.getElementById("startDateValue").value);
@@ -43,7 +42,7 @@
         startDate.setHours(0,0,0,1);  // Start just after midnight
         endDate.setHours(23,59,59,999);  // End just before midnight
         var diff = endDate - startDate;  // Milliseconds between datetime objects    
-        var days = Math.ceil(diff / millisecondsPerDay);    
+        days = Math.ceil(diff / millisecondsPerDay);    
 
         // Subtract two weekend days for every week in between
         var weeks = Math.floor(days / 7);
@@ -58,20 +57,17 @@
             document.getElementById("diffDays").innerHTML = 0;
           }
     }     
-        </script>
 
-        <script>
           function requiredWriters() {
-            if (days() && hoursPerDay()) {
-              // YOU ARE HERE!
-            var days = days
-            var requiredWriters = 2.5;
+              var availableHours = days * hoursPerDay;
+              var requiredWriters = totalEffortHours / availableHours;
+              // alert(requiredWriters)
               // Populate template with number of required writers       
-              if (requiredWriters > 0) {
-                document.getElementById("requiredWriters").innerHTML = requiredWriters;
-              } else {
-                document.getElementById("requiredWriters").innerHTML = 0;
-              } 
+                if (requiredWriters > 0) {
+                  document.getElementById("requiredWriters").innerHTML = requiredWriters.toFixed(1);
+                } else {
+                  document.getElementById("requiredWriters").innerHTML = 0;
+                } 
           }
         </script>
 
