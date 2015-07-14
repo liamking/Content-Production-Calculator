@@ -48,28 +48,24 @@
         var weeks = Math.floor(days / 7);
         days = days - (weeks * 2);
 
-
-
         // Populate template with working days       
           if (days > 0) {
             document.getElementById("diffDays").innerHTML = days;
           } else {
             document.getElementById("diffDays").innerHTML = 0;
           }
-    }     
 
-          function requiredWriters() {
-              var availableHours = days * hoursPerDay;
-              var requiredWriters = totalEffortHours / availableHours;
-              // alert(requiredWriters)
-              // Populate template with number of required writers       
-                if (requiredWriters > 0) {
-                  document.getElementById("requiredWriters").innerHTML = requiredWriters.toFixed(1);
-                } else {
-                  document.getElementById("requiredWriters").innerHTML = 0;
-                } 
+       // Calculate how many writers are required to produce the required number of pages during the defined production period
+          var availableHours = days * hoursPerDay;
+          var requiredWriters = totalEffortHours / availableHours;
+          // Populate template with number of required writers
+          if (requiredWriters > 0) {
+            document.getElementById("requiredWriters").innerHTML = requiredWriters.toFixed(1);
+          } else {
+            document.getElementById("requiredWriters").innerHTML = 0;
           }
-        </script>
+      }     
+    </script>
 
 
    </head>
