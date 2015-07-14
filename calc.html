@@ -7,9 +7,11 @@
     <title>Content production planning calculator</title>
 
 	   <script>
-	   	hoursPerDay = 6;
+	   	//The (estimated) hours actually worked in one working day
+      hoursPerDay = 6;
 
       function calculatorVariables() {
+        //Calcuate effort required to produce target number of pages on a project
 	   		var targetPages = document.getElementById("targetPagesValue").value;
 	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
 	   		totalEffortHours = (effortPerPageHours * targetPages);			  
@@ -20,20 +22,7 @@
 						document.getElementById("totalEffortDays").innerHTML = 0;
 					}
 
- //         var startDate = new Date (document.getElementById("startDateValue").value);
- //         var endDate = new Date (document.getElementById("endDateValue").value);
- //         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
- //         var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)) + 1);  // "+1" is to include Day zero of production
- //         if (diffDays > 0) {
- //           document.getElementById("diffDays").innerHTML = diffDays;
- //         } else {
- //           document.getElementById("diffDays").innerHTML = 0;
- //         }
-	   	}
-
-
-      //Calcuate working days in the content production phase
-      function workingDaysBetweenDates() {
+        //Calcuate working days in the content production phase
         var startDate = new Date (document.getElementById("startDateValue").value);
         var endDate = new Date (document.getElementById("endDateValue").value);
 
@@ -95,8 +84,8 @@
       <h2>Production period</h2>
         <p>When do you expect to start and end the content production phase?</p>
         <form id="productionPeriod" onsubmit="return false;">
-          Start date: <input type="date" id="startDateValue" onchange="workingDaysBetweenDates()"/><br />
-          End date: <input type="date" id="endDateValue" onchange="workingDaysBetweenDates()"/><br />
+          Start date: <input type="date" id="startDateValue" onchange="calculatorVariables()"/><br />
+          End date: <input type="date" id="endDateValue" onchange="calculatorVariables()"/><br />
         </form>
         <p><span id="diffDays">0</span> working days</p>
 
