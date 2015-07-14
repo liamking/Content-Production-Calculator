@@ -7,11 +7,14 @@
     <title>Content production planning calculator</title>
 
 	   <script>
-	   	function calculatorVariables() {
+	   	//The (estimated) hours actually worked in one working day
+      hoursPerDay = 6;
+
+      function calculatorVariables() {
+        //Calcuate effort required to produce target number of pages on a project
 	   		var targetPages = document.getElementById("targetPagesValue").value;
 	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
-	   		var totalEffortHours = (effortPerPageHours * targetPages);
-			  var hoursPerDay = 6;
+	   		totalEffortHours = (effortPerPageHours * targetPages);			  
 			  var totalEffortDays = totalEffortHours / hoursPerDay;
 					if (totalEffortDays > 0) {
 						document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
@@ -19,22 +22,7 @@
 						document.getElementById("totalEffortDays").innerHTML = 0;
 					}
 
- //         var startDate = new Date (document.getElementById("startDateValue").value);
- //         var endDate = new Date (document.getElementById("endDateValue").value);
- //         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
- //         var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)) + 1);  // "+1" is to include Day zero of production
- //         if (diffDays > 0) {
- //           document.getElementById("diffDays").innerHTML = diffDays;
- //         } else {
- //           document.getElementById("diffDays").innerHTML = 0;
- //         }
-	   	}
-
-	  </script>
-
-    <script>
-      //Calcuate working days in the content production phase
-      function workingDaysBetweenDates() {
+        //Calcuate working days in the content production phase
         var startDate = new Date (document.getElementById("startDateValue").value);
         var endDate = new Date (document.getElementById("endDateValue").value);
 
@@ -43,13 +31,11 @@
         startDate.setHours(0,0,0,1);  // Start just after midnight
         endDate.setHours(23,59,59,999);  // End just before midnight
         var diff = endDate - startDate;  // Milliseconds between datetime objects    
-        var days = Math.ceil(diff / millisecondsPerDay);    
+        days = Math.ceil(diff / millisecondsPerDay);    
 
         // Subtract two weekend days for every week in between
         var weeks = Math.floor(days / 7);
         days = days - (weeks * 2);
-
-
 
         // Populate template with working days       
           if (days > 0) {
@@ -57,8 +43,19 @@
           } else {
             document.getElementById("diffDays").innerHTML = 0;
           }
-    }     
-        </script>
+
+       // Calculate how many writers are required to produce the required number of pages during the defined production period
+          var availableHours = days * hoursPerDay;
+          var requiredWriters = totalEffortHours / availableHours;
+          // Populate template with number of required writers
+          if (requiredWriters > 0) {
+            document.getElementById("requiredWriters").innerHTML = requiredWriters.toFixed(1);
+          } else {
+            document.getElementById("requiredWriters").innerHTML = 0;
+          }
+      }     
+    </script>
+
 
    </head>
 
@@ -87,9 +84,14 @@
       <h2>Production period</h2>
         <p>When do you expect to start and end the content production phase?</p>
         <form id="productionPeriod" onsubmit="return false;">
-          Start date: <input type="date" id="startDateValue" onchange="workingDaysBetweenDates()"/><br />
-          End date: <input type="date" id="endDateValue" onchange="workingDaysBetweenDates()"/><br />
+          Start date: <input type="date" id="startDateValue" onchange="calculatorVariables()"/><br />
+          End date: <input type="date" id="endDateValue" onchange="calculatorVariables()"/><br />
         </form>
         <p><span id="diffDays">0</span> working days</p>
+
+      <!-- WRITERS REQUIRED FEATURE -->
+
+      <p><span id="requiredWriters">0</span> FULL TIME WRITER/S</p>
+      <button onclick="requiredWriters()">Calculate required writers</button>
    </body>
 </html>
