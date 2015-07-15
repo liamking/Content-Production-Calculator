@@ -57,10 +57,11 @@ p {
 
 
 h1 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: lighter;
     font-family:'Nunito', sans-serif;
 }
+
 h3 {
     font-weight: lighter;
     font-size: 0.8em;
@@ -81,7 +82,7 @@ h3 {
 h2.calcHeading {
     text-transform: uppercase;
     font-family:'Nunito', sans-serif;
-    font-size: 21pt;
+    font-size: 1em;
     font-weight: normal;
     color: #ffffff;
     text-align: center;
