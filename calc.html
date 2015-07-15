@@ -7,7 +7,141 @@
     <title>Content production planning calculator</title>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Nunito">
-    <link rel="stylesheet" type="text/css" href="content-production-calculator.css">
+    <!-- Added the styles to the head for now <link rel="stylesheet" type="text/css" href="content-production-calculator.css"> -->
+
+    <style type="text/css">
+              /* http://meyerweb.com/eric/tools/css/reset/ 
+           v2.0 | 20110126
+           License: none (public domain)
+        */
+
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+
+        /* Styles start */
+
+        p {
+            font-size: 0.4em;
+            font-weight: lighter;
+        }
+
+
+        h1 {
+            font-size: 2em;
+            font-weight: lighter;
+            font-family:'Nunito', sans-serif;
+        }
+
+        h3 {
+            font-weight: lighter;
+            font-size: 0.8em;
+        }
+
+        .big {
+            font-size: 3em;
+            font-weight: lighter;
+        }
+        .input-lg {
+            font-size: 1.8em;
+            font-weight: lighter;
+        }
+        #calcHeader {
+            background: #484848;
+        }
+
+        h2.calcHeading {
+            text-transform: uppercase;
+            font-family:'Nunito', sans-serif;
+            font-size: 1em;
+            font-weight: normal;
+            color: #ffffff;
+            text-align: center;
+            padding-top: 0.9em;
+            padding-bottom: 0.9em;
+        }
+        .calcBody {
+            background: #93d8e8;
+            font-family:'Nunito', sans-serif;
+            color: #484848;
+            padding-bottom: 1em;
+        }
+        .calcRow {
+            border-top: #ffffff 1px solid;
+            padding-top: 2em;
+        }
+        #calcFooter {
+            background: #484848;
+        }
+        p.totalBox {
+            background: #ffffff;
+        }
+        .subTotalBox {
+            background: #484848;
+            padding: 0.5em;
+            font-family:'Nunito', sans-serif;
+            font-size: 1em;
+            font-weight: normal;
+            border-radius: 5px;
+        }
+        .subTotalText {
+            color: #484848;
+            background-color: #ffffff;
+            text-transform: uppercase;
+            padding-left: 1em;
+            padding-right: 1em;
+            border-radius: 5px;
+        }
+        .subTotalLabel {
+            color: #ffffff;
+            padding-left: 1em;
+        }
+        label {
+            font-size: 0.4em;
+        }
+
+    </style>
 
 	   <script>
 	   	//The (estimated) hours actually worked in one working day
@@ -63,7 +197,6 @@
    </head>
 
    <body>
-    <h1>Content Production Calculator<h1>
     <div class="row" id="calcHeader">
         <div class="col-md-12">
              <h2 class="calcHeading">How many writers do we need for our website project?</h2>
