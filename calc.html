@@ -172,7 +172,7 @@
         //Calcuate working days in the content production phase
         var startDate = new Date (document.getElementById("startDateValue").value);
         var endDate = new Date (document.getElementById("endDateValue").value);
-        
+
         // Calculate days between dates
         var millisecondsPerDay = 86400 * 1000; // Day in milliseconds
         startDate.setHours(0,0,0,1);  // Start just after midnight
@@ -266,15 +266,6 @@
               <input type="text" name="endDate" id="endDateValue" onchange="calculatorVariables()" placeholder="MM/DD/YYYY"/><br />
           </form>
         </div>
-<!--
-          <form id="productionPeriod" onsubmit="return false;">
-            <h4>End date:</h4>
-              <input type="text" id="date" onchange="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
-          </form>
-          <p>Date: <input type="text" name="date" id="date"></p>
-         --> 
-
-
       </div>
 
       <div class="row calcBody">
