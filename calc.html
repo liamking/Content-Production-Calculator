@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Content production planning calculator</title>
+      <link rel="stylesheet" href="jquery-ui.min.css">
+      <script src="jquery-ui.min.js"></script>
+      <script src="jquery.js"></script>
+
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Nunito">
     <!-- Added the styles to the head for now <link rel="stylesheet" type="text/css" href="content-production-calculator.css"> -->
@@ -139,8 +143,7 @@
         }
         label {
             font-size: 0.4em;
-        }
-
+        }        
     </style>
 
 	   <script>
@@ -192,7 +195,12 @@
           }
       }     
     </script>
-
+    <script>
+      //Date picker
+      $(function() {
+        $( "#date" ).datepicker();
+      });
+    </script>
 
    </head>
 
@@ -242,15 +250,24 @@
         <div class="col-md-3 col-md-offset-3">
           <form id="productionPeriod" onsubmit="return false;">
             <h4>Start date:</h4> 
-              <input type="date" id="startDateValue" onchange="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
+              <input type="date" id="startDateValue" onchange="calculatorVariables()" onblur="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
           </form>
         </div>
         <div class="col-md-3 col-md-offset-0">  
           <form id="productionPeriod" onsubmit="return false;">
             <h4>End date:</h4>
-              <input type="date" id="endDateValue" onchange="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
+              <input type="date" id="endDateValue" onchange="calculatorVariables()" onblur="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
           </form>
         </div>
+<!--
+          <form id="productionPeriod" onsubmit="return false;">
+            <h4>End date:</h4>
+              <input type="text" id="date" onchange="calculatorVariables()" placeholder="DD/MM/YYYY"/><br />
+          </form>
+          <p>Date: <input type="text" name="date" id="date"></p>
+         --> 
+
+
       </div>
 
       <div class="row calcBody">
