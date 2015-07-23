@@ -156,7 +156,7 @@
 	   <script>
 	   	//The (estimated) hours actually worked in one working day
       hoursPerDay = 6;
-      dayRateWriter = 400;
+      
 
       function calculatorVariables() {
         //Calcuate effort required to produce target number of pages on a project
@@ -203,9 +203,10 @@
           }
         
         //Calculate cost of hiring the required number of writers
-          var totalCostPerDay = dayRateWriter * requiredWriters.toFixed(1)
+          var dayRatePerWriter = document.getElementById("dayRatePerWriter").value;
+          var totalCostPerDay = dayRatePerWriter * requiredWriters.toFixed(1)
           var totalCostWorkingDays = totalCostPerDay * days;
-          // Populate template with cost of hiring writers
+                    // Populate template with cost of hiring writers
           if (totalCostWorkingDays > 0) {
             document.getElementById("totalCostWorkingDays").innerHTML = "$" + " " +totalCostWorkingDays;
           } else {
@@ -290,6 +291,20 @@
         <div class="col-md-6 col-md-offset-3 subTotalBox">
           <p class="subTotalLabel"><span id="requiredWriters" class="subTotalText">0</span> FULL TIME WRITER/S</p>
         </div>
+      </div>
+
+      <div class="row calcBody">
+        <div class="col-md-6 col-md-offset-3">
+          <h3>Writer day rate</h3>
+            <form onsubmit="return false;">
+                <input type="text" id="dayRatePerWriter" onchange="calculatorVariables();" /> day rate<br />
+            </form>
+                    <p>If you need to hire extra writers punch in their day rate.</p>
+                    <p>£400 is the market rate in the UK for a top web writer.</p>
+        </div>
+      </div>
+
+      <div id="calcFooter" class="row">              
         <div class="col-md-6 col-md-offset-3 subTotalBox">
           <p class="subTotalLabel">Cost: <span id="totalCostWorkingDays" class="subTotalText">$0</span></p>
         </div>        
