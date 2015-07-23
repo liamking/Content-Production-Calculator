@@ -207,7 +207,7 @@
           var totalCostWorkingDays = totalCostPerDay * days;
           // Populate template with cost of hiring writers
           if (totalCostWorkingDays > 0) {
-            document.getElementById("totalCostWorkingDays").innerHTML = totalCostWorkingDays;
+            document.getElementById("totalCostWorkingDays").innerHTML = "$" + " " +totalCostWorkingDays;
           } else {
             document.getElementById("totalCostWorkingDays").innerHTML = 0;
           }
@@ -291,7 +291,7 @@
           <p class="subTotalLabel"><span id="requiredWriters" class="subTotalText">0</span> FULL TIME WRITER/S</p>
         </div>
         <div class="col-md-6 col-md-offset-3 subTotalBox">
-          <p class="subTotalLabel">Cost: <span id="totalCostWorkingDays" class="subTotalText">0</span></p>
+          <p class="subTotalLabel">Cost: <span id="totalCostWorkingDays" class="subTotalText">$0</span></p>
         </div>        
       </div>
 
