@@ -156,6 +156,7 @@
 	   <script>
 	   	//The (estimated) hours actually worked in one working day
       hoursPerDay = 6;
+      
 
       function calculatorVariables() {
         //Calcuate effort required to produce target number of pages on a project
@@ -199,6 +200,17 @@
             document.getElementById("requiredWriters").innerHTML = requiredWriters.toFixed(1);
           } else {
             document.getElementById("requiredWriters").innerHTML = 0;
+          }
+        
+        //Calculate cost of hiring the required number of writers
+          var dayRatePerWriter = document.getElementById("dayRatePerWriter").value;
+          var totalCostPerDay = dayRatePerWriter * requiredWriters.toFixed(1)
+          var totalCostWorkingDays = totalCostPerDay * days;
+                    // Populate template with cost of hiring writers
+          if (totalCostWorkingDays > 0) {
+            document.getElementById("totalCostWorkingDays").innerHTML = "£" + totalCostWorkingDays;
+          } else {
+            document.getElementById("totalCostWorkingDays").innerHTML = 0;
           }
       }     
     </script>
@@ -279,6 +291,23 @@
         <div class="col-md-6 col-md-offset-3 subTotalBox">
           <p class="subTotalLabel"><span id="requiredWriters" class="subTotalText">0</span> FULL TIME WRITER/S</p>
         </div>
+      </div>
+
+      <div class="row calcBody">
+        <div class="col-md-6 col-md-offset-3">
+          <h3>What is the day rate for a writer?</h3>
+            <form onsubmit="return false;">
+                £ <input type="text" id="dayRatePerWriter" onchange="calculatorVariables();" /> per day<br />
+            </form>
+                    <p>If you need to hire extra writers punch in their quoted day rate.</p>
+                    <p>Guide: £350-550 per day is the market rate in the UK for a top-quality web writer. <a href="http://www.procopywriters.co.uk/recommended-rates-for-hiring-copywriters/" />The Professional Copywriters’ Network</a> suggest that most freelance copywriters charge average rates of £250 to £800 per day depending on their experience.</p>
+        </div>
+      </div>
+
+      <div id="calcFooter" class="row">              
+        <div class="col-md-6 col-md-offset-3 subTotalBox">
+          <p class="subTotalLabel"><span id="totalCostWorkingDays" class="subTotalText">£0</span> cost to hire writers</p>
+        </div>        
       </div>
 
 
