@@ -208,7 +208,7 @@
           var totalCostWorkingDays = totalCostPerDay * days;
                     // Populate template with cost of hiring writers
           if (totalCostWorkingDays > 0) {
-            document.getElementById("totalCostWorkingDays").innerHTML = "£" + totalCostWorkingDays;
+            document.getElementById("totalCostWorkingDays").innerHTML = "£" + totalCostWorkingDays.toFixed(0);
           } else {
             document.getElementById("totalCostWorkingDays").innerHTML = "£" + 0;
           }
