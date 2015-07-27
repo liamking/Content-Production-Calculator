@@ -163,7 +163,7 @@
 	   		var targetPages = document.getElementById("targetPagesValue").value;
 	   		var effortPerPageHours = document.getElementById("effortPerPageHoursValue").value;
 	   		totalEffortHours = (effortPerPageHours * targetPages);			  
-			  var totalEffortDays = totalEffortHours / hoursPerDay;
+			  totalEffortDays = totalEffortHours / hoursPerDay;
 					if (totalEffortDays > 0) {
 						document.getElementById("totalEffortDays").innerHTML = totalEffortDays.toFixed(1);
 					}	else {
@@ -202,15 +202,16 @@
             document.getElementById("requiredWriters").innerHTML = 0;
           }
         
-        //Calculate cost of hiring the required number of writers
+        //Calculate cost of hiring writers for the days or required effort to produce target pages
           var dayRatePerWriter = document.getElementById("dayRatePerWriter").value;
-          var totalCostPerDay = dayRatePerWriter * requiredWriters.toFixed(1)
-          var totalCostWorkingDays = totalCostPerDay * days;
+          //var totalCostPerDay = dayRatePerWriter * requiredWriters.toFixed(1)
+          //var totalCostWorkingDays = totalCostPerDay * days;
+          var totalCostForRequiredDays = dayRatePerWriter * totalEffortDays;
                     // Populate template with cost of hiring writers
-          if (totalCostWorkingDays > 0) {
-            document.getElementById("totalCostWorkingDays").innerHTML = "£" + totalCostWorkingDays.toFixed(0);
+          if (totalCostForRequiredDays > 0) {
+            document.getElementById("totalCostForRequiredDays").innerHTML = "£" + totalCostForRequiredDays.toFixed(0);
           } else {
-            document.getElementById("totalCostWorkingDays").innerHTML = "£" + 0;
+            document.getElementById("totalCostForRequiredDays").innerHTML = "£" + 0;
           }
       }     
     </script>
@@ -306,7 +307,7 @@
 
       <div id="calcFooter" class="row">              
         <div class="col-md-6 col-md-offset-3 subTotalBox">
-          <p class="subTotalLabel"><span id="totalCostWorkingDays" class="subTotalText">£0</span> cost to hire writers</p>
+          <p class="subTotalLabel"><span id="totalCostForRequiredDays" class="subTotalText">£0</span> to hire writers to write all pages</p>
         </div>        
       </div>
 
